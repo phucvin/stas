@@ -73,6 +73,16 @@ fn fib_recursive 1 1 {
 	0 1 fib_tail_recursive_fn
 }
 
+fn fib_naive 1 1 {
+	dup 2 >= if {
+		dup
+		- 1 fib_naive
+		swap
+		- 2 fib_naive
+		+
+	}
+}
+
 ; The tail recursive function will be optimised in 
 ; a way that it will never self call. It will be 
 ; as fast as the iterative method.
@@ -80,4 +90,5 @@ fn fib_recursive 1 1 {
 fn main {
 	"(iterative) Fibonacci number 33 = " puts 33 fib_iterative putuln
 	"(recursive) Fibonacci number 54 = " puts 54 fib_recursive putuln
+	"(naive    ) Fibonacci number 40 = " puts 40 fib_recursive putuln
 }
